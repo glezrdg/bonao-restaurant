@@ -326,6 +326,62 @@ This prevents "muddy" color harmony.
 
 ---
 
+## Photography Guidelines
+
+### Photo Sources
+
+1. **Menu item photos:** Use TryOtter CDN URLs from `src/data/menu.ts`
+2. **Optimized local photos:** Use `/optimized/food/` directory (WebP, multiple sizes)
+3. **Placeholder strategy:** Use solid color blocks or subtle gradients until real photos available
+
+### Photo Selection Criteria
+
+**For Hero/Ambient shots:**
+- Interior shots with warm lighting, visible atmosphere
+- Moody, dramatic shadows—not flat lighting
+- Show the "lounge" feeling: candlelight, bar glow, intimate tables
+- Avoid: bright daylight, empty rooms, clinical/sterile looks
+
+**For Food/Dish photos:**
+- Warm tones that complement Bronze/Copper palette
+- Styled with depth: shallow focus, interesting angles
+- Dark backgrounds preferred (match Deep Charcoal sections)
+- Show steam, texture, freshness cues
+
+**For Cocktail/Drink photos:**
+- Dramatic lighting, glassware reflections
+- Dark or moody backgrounds
+- Show condensation, garnishes, craftsmanship
+
+### Photo Treatment Rules
+
+| Context | Treatment |
+|---------|-----------|
+| Hero section | Full-bleed + dark overlay (40-60% opacity) |
+| Feature cards on Paper | Subtle border (Bronze or Walnut 10%) |
+| Menu items | Clean, no overlay, focus on food |
+| Split sections | Framed with thin Bronze border |
+
+### Responsive Image Sizes
+
+Use the `/optimized/` variants:
+- `_400.webp` → Mobile thumbnails
+- `_800.webp` → Mobile full-width, tablet cards
+- `_1200.webp` → Desktop cards
+- `_1920.webp` → Hero sections, full-bleed
+
+### Photo Harmony with Sage
+
+Since Sage (#5F6654) is muted/earthy:
+- ✅ Photos with neutral shadows work best
+- ✅ Warm highlights + cool shadows = balanced
+- ❌ Avoid overly orange/yellow-cast photos (makes Sage look gray)
+- ❌ Avoid cool-blue photos (clashes with warm brand)
+
+**Best combo:** Warm food/drink photos on Deep Charcoal sections, with Sage CTAs. The charcoal neutralizes the warmth.
+
+---
+
 ## When to Apply
 
 Apply these guidelines whenever creating:

@@ -13,19 +13,39 @@ npm run lint     # Run ESLint
 
 ## Color Tokens
 
-| Token | Hex | CSS Variable | Tailwind |
-|-------|-----|--------------|----------|
-| Midnight | `#020B14` | `var(--midnight)` | `bg-midnight` |
-| Ink | `#190F0D` | `var(--ink)` | `text-ink` |
-| Ivory | `#F8F2EC` | `var(--ivory)` | `bg-ivory` |
-| Bronze | `#A46A3A` | `var(--bronze)` | `text-bronze` |
-| Ember | `#BB452B` | `var(--ember)` | `bg-ember` |
+### Base (Dark Mode)
+| Token | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Deep Charcoal | `#0C0C0C` | `var(--deep-charcoal)` | Dark section backgrounds |
+| Primary Text | `#FCFCFC` | `var(--primary-text-dark)` | Text on dark |
+| Greige | `#C4BCB4` | `var(--greige)` | Muted text on dark |
 
-**Utility colors:**
-```css
---line-dark: rgba(255, 255, 255, 0.10);
---muted-dark: rgba(255, 255, 255, 0.72);
-```
+### Brand Identity (Sage)
+| Token | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Logo Sage | `#5F6654` | `var(--logo-sage)` | **Primary CTAs**, brand identity |
+| Sage Focus | `rgba(95,102,84,0.5)` | `var(--sage-focus)` | Focus rings, form accents |
+
+### Warm Luxury Accents
+| Token | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Bronze | `#9C744C` | `var(--bronze)` | Labels, icons, highlights |
+| Copper | `#A47444` | `var(--copper)` | Warm highlight alternative |
+| Walnut | `#644C3C` | `var(--walnut)` | Secondary text on paper |
+| Espresso | `#542C0C` | `var(--espresso)` | Primary text on paper |
+
+### Paper Sections
+| Token | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Linen | `#ECE4DC` | `var(--linen)` | Paper section backgrounds |
+| Paper White | `#FCFCFC` | `var(--paper-white)` | Cards on paper |
+| Sand Cream | `#F4D4B4` | `var(--sand-cream)` | Feature highlights (sparingly) |
+
+### Borders
+| Context | Value |
+|---------|-------|
+| On dark | `rgba(236, 228, 220, 0.12)` |
+| On light | `rgba(100, 76, 60, 0.12)` |
 
 ---
 
@@ -35,9 +55,72 @@ npm run lint     # Run ESLint
 |---------|------|-------|
 | Hero headline | EB Garamond Italic | `font-garamond text-5xl italic` |
 | Section title | EB Garamond Italic | `font-garamond text-4xl italic` |
-| Section label | Figtree Uppercase | `uppercase tracking-wider text-sm` |
+| Section label | Figtree Uppercase | `uppercase tracking-wider text-sm text-sage` or `text-copper` |
 | Body | Figtree | `font-sans text-base` |
 | Button | Figtree | `font-sans font-medium` |
+
+---
+
+## Button Patterns
+
+```tsx
+{/* Primary CTA (Sage - conversions) */}
+<Button variant="primary" href="/reserve">
+  Book a Table
+</Button>
+{/* → bg-sage text-white */}
+
+{/* Secondary CTA (Ghost/outline) */}
+<Button variant="secondary" href="/menu">
+  View Menu
+</Button>
+{/* → border-linen text-linen bg-transparent */}
+
+{/* Link style (Copper underline) */}
+<a href="/about" className="text-copper hover:underline">
+  Learn More →
+</a>
+```
+
+---
+
+## Section Patterns
+
+```tsx
+{/* Dark section (Deep Charcoal) */}
+<Section variant="dark" id="section-id">
+  <span className="text-copper uppercase tracking-wider text-sm">LABEL</span>
+  <h2 className="font-garamond text-4xl italic text-white mt-2">Title</h2>
+  <p className="text-greige">Body text here</p>
+</Section>
+
+{/* Paper section (Linen) */}
+<Section variant="paper" id="section-id">
+  <span className="text-sage uppercase tracking-wider text-sm">LABEL</span>
+  <h2 className="font-garamond text-4xl italic text-espresso mt-2">Title</h2>
+  <p className="text-walnut">Body text here</p>
+</Section>
+```
+
+---
+
+## Text Colors by Section
+
+### On Dark (Deep Charcoal)
+| Purpose | Color | Class |
+|---------|-------|-------|
+| Primary text | `#FCFCFC` | `text-white` |
+| Muted text | `#C4BCB4` | `text-greige` |
+| Accent labels | `#A47444` | `text-copper` |
+| CTA button | `#5F6654` | `bg-sage` |
+
+### On Paper (Linen)
+| Purpose | Color | Class |
+|---------|-------|-------|
+| Primary text | `#542C0C` | `text-espresso` |
+| Secondary text | `#644C3C` | `text-walnut` |
+| Accent labels | `#5F6654` | `text-sage` |
+| Card background | `#FCFCFC` | `bg-paper-white` |
 
 ---
 
@@ -83,85 +166,38 @@ import { cn, formatPrice, generateWhatsAppUrl } from '@/lib/utils';
 
 ---
 
-## Section Pattern
+## CSS Variables (Full Set)
 
-```tsx
-{/* Dark section */}
-<Section variant="dark" id="section-id">
-  <span className="text-bronze uppercase tracking-wider text-sm">LABEL</span>
-  <h2 className="font-garamond text-4xl italic mt-2">Title</h2>
-  {/* Content */}
-</Section>
+```css
+/* Base (Dark Mode) */
+--deep-charcoal: #0C0C0C;
+--primary-text-dark: #FCFCFC;
+--greige: #C4BCB4;
+--dark-texture: rgba(255, 255, 255, 0.04);
 
-{/* Ivory section */}
-<Section variant="ivory" id="section-id">
-  <span className="text-bronze uppercase tracking-wider text-sm">LABEL</span>
-  <h2 className="font-garamond text-4xl italic mt-2 text-ink">Title</h2>
-  {/* Content */}
-</Section>
+/* Brand Identity (Sage) */
+--logo-sage: #5F6654;
+--sage-focus: rgba(95, 102, 84, 0.5);
+
+/* Warm Luxury Accents */
+--bronze: #9C744C;
+--copper: #A47444;
+--walnut: #644C3C;
+--espresso: #542C0C;
+
+/* Paper Sections */
+--linen: #ECE4DC;
+--paper-white: #FCFCFC;
+--sand-cream: #F4D4B4;
+
+/* Borders & Separators */
+--line-dark: rgba(236, 228, 220, 0.12);
+--line-light: rgba(100, 76, 60, 0.12);
+
+/* Fonts */
+--font-primary: 'Figtree', sans-serif;
+--font-luxury: 'EB Garamond', serif;
 ```
-
----
-
-## Button Patterns
-
-```tsx
-{/* Primary CTA (conversions) */}
-<Button variant="primary" href="/reserve">
-  Book a Table
-</Button>
-
-{/* Secondary CTA */}
-<Button variant="secondary" href="/menu">
-  View Menu
-</Button>
-
-{/* Ghost/soft CTA */}
-<Button variant="ghost" href="/about">
-  Learn More →
-</Button>
-```
-
----
-
-## Responsive Breakpoints
-
-| Name | Width | Tailwind Prefix |
-|------|-------|-----------------|
-| Mobile | 320px+ | (default) |
-| Tablet | 768px+ | `md:` |
-| Desktop | 1024px+ | `lg:` |
-| Wide | 1280px+ | `xl:` |
-
-```tsx
-{/* Responsive grid example */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-```
-
----
-
-## Common Tailwind Classes
-
-### Spacing
-- Container: `max-w-6xl mx-auto px-4`
-- Section: `py-16 md:py-24`
-- Card: `p-6 md:p-8`
-
-### Text on Dark
-- Primary: `text-white`
-- Muted: `text-white/70`
-- Accent: `text-bronze`
-
-### Text on Ivory
-- Primary: `text-ink`
-- Muted: `text-ink/60`
-- Accent: `text-bronze`
-
-### Effects
-- Card shadow: `shadow-lg`
-- Blur backdrop: `backdrop-blur-sm`
-- Hover lift: `hover:scale-102 transition-transform`
-- Border subtle: `border border-white/10`
 
 ---
 
@@ -212,52 +248,63 @@ const url = `https://wa.me/17183460285?text=${prefilled}`;
 
 ---
 
+## Responsive Breakpoints
+
+| Name | Width | Tailwind Prefix |
+|------|-------|-----------------|
+| Mobile | 320px+ | (default) |
+| Tablet | 768px+ | `md:` |
+| Desktop | 1024px+ | `lg:` |
+| Wide | 1280px+ | `xl:` |
+
+---
+
+## Common Tailwind Classes
+
+### Spacing
+- Container: `max-w-6xl mx-auto px-4`
+- Section: `py-16 md:py-24`
+- Card: `p-6 md:p-8`
+
+### Dark Section Styling
+```tsx
+<section className="bg-deep-charcoal">
+  <h2 className="text-white font-garamond italic">Title</h2>
+  <p className="text-greige">Muted body text</p>
+  <span className="text-copper uppercase tracking-wider text-sm">LABEL</span>
+  <button className="bg-sage text-white">Reserve</button>
+</section>
+```
+
+### Paper Section Styling
+```tsx
+<section className="bg-linen">
+  <h2 className="text-espresso font-garamond italic">Title</h2>
+  <p className="text-walnut">Body text</p>
+  <span className="text-sage uppercase tracking-wider text-sm">LABEL</span>
+  <div className="bg-paper-white shadow-lg">Card content</div>
+</section>
+```
+
+### Effects
+- Card shadow: `shadow-lg`
+- Dark texture overlay: `bg-white/[0.04]`
+- Hover lift: `hover:scale-102 transition-transform`
+- Border on dark: `border border-linen/10`
+- Border on light: `border border-walnut/10`
+
+---
+
 ## Form Field Patterns
 
 ```tsx
-{/* Text input */}
-<Input
-  type="text"
-  name="fullName"
-  label="Full Name"
-  required
-/>
+{/* Input on dark background */}
+<input className="bg-deep-charcoal border border-linen/20 text-white
+  placeholder:text-greige focus:border-sage focus:ring-sage/50" />
 
-{/* Email */}
-<Input
-  type="email"
-  name="email"
-  label="Email Address"
-  required
-/>
-
-{/* Phone */}
-<Input
-  type="tel"
-  name="phone"
-  label="Phone Number"
-  required
-/>
-
-{/* Date */}
-<Input
-  type="date"
-  name="preferredDate"
-  label="Preferred Date"
-  required
-/>
-
-{/* Select */}
-<Select
-  name="eventType"
-  label="Event Type"
-  options={[
-    { value: 'birthday', label: 'Birthday' },
-    { value: 'corporate', label: 'Corporate' },
-    { value: 'anniversary', label: 'Anniversary' },
-  ]}
-  required
-/>
+{/* Input on paper background */}
+<input className="bg-paper-white border border-walnut/15 text-espresso
+  placeholder:text-walnut/60 focus:border-sage focus:ring-sage/50" />
 ```
 
 ---

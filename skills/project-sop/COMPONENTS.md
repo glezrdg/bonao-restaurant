@@ -47,9 +47,9 @@ interface ButtonProps {
 **Variants:**
 | Variant | Background | Text | Border | Usage |
 |---------|------------|------|--------|-------|
-| primary | Ember (#BB452B) | White | None | Book, Order CTAs |
-| secondary | Transparent | Bronze | Bronze 1px | View Menu, Learn More |
-| ghost | Transparent | Bronze | None | Inline links, soft CTAs |
+| primary | Sage (#5F6654) | White | None | Book, Reserve CTAs |
+| secondary | Transparent | Linen/Greige | Linen 1px | View Menu, Learn More |
+| ghost | Transparent | Copper | None | Inline links, soft CTAs |
 
 **Sizes:**
 | Size | Padding | Font Size |
@@ -59,8 +59,8 @@ interface ButtonProps {
 | lg | px-8 py-4 | 18px |
 
 **States:**
-- Hover: Slight brightness increase, subtle lift
-- Focus: Ring with bronze color
+- Hover: Sage darkens 10%, subtle lift
+- Focus: Ring with Sage at 50% opacity
 - Disabled: 50% opacity, no pointer events
 
 ---
@@ -71,7 +71,7 @@ interface ButtonProps {
 
 ```typescript
 interface CardProps {
-  variant: 'dark' | 'ivory';
+  variant: 'dark' | 'paper' | 'card' | 'feature';
   hover?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -81,8 +81,10 @@ interface CardProps {
 **Variants:**
 | Variant | Background | Text | Border |
 |---------|------------|------|--------|
-| dark | Midnight | White/Muted | rgba(255,255,255,0.10) |
-| ivory | Ivory | Ink | None or Bronze subtle |
+| dark | Deep Charcoal (#0C0C0C) | White/Greige | rgba(236,228,220,0.12) |
+| paper | Linen (#ECE4DC) | Espresso/Walnut | rgba(100,76,60,0.12) |
+| card | Paper White (#FCFCFC) | Espresso | Subtle shadow |
+| feature | Sand Cream (#F4D4B4) | Espresso | Use sparingly |
 
 **Hover behavior (when enabled):**
 - Slight scale (1.02)
@@ -109,10 +111,11 @@ interface InputProps {
 ```
 
 **Styling:**
-- Background: White (on dark) or subtle gray (on ivory)
-- Border: 1px subtle, Bronze on focus
+- On dark: Deep Charcoal bg, Linen/12 border, White text
+- On paper: Paper White bg, Walnut/15 border, Espresso text
+- Focus state: Sage border + Sage/50 ring
 - Label: Figtree, small, above input
-- Error: Ember text below input
+- Error: Copper text below input
 
 ---
 
@@ -158,7 +161,7 @@ interface BadgeProps {
 
 ```typescript
 interface SectionProps {
-  variant: 'dark' | 'ivory';
+  variant: 'dark' | 'paper';
   id?: string;
   className?: string;
   children: React.ReactNode;
@@ -171,12 +174,18 @@ interface SectionProps {
 - Centered content with max-width
 - Applies appropriate background + text colors
 
+**Variant Styles:**
+| Variant | Background | Text | Labels |
+|---------|------------|------|--------|
+| dark | Deep Charcoal (#0C0C0C) | White + Greige | Copper |
+| paper | Linen (#ECE4DC) | Espresso + Walnut | Sage |
+
 ```tsx
 // Usage
 <Section variant="dark" id="hero">
   <HeroContent />
 </Section>
-<Section variant="ivory" id="signatures">
+<Section variant="paper" id="signatures">
   <SignatureGrid />
 </Section>
 ```
@@ -189,27 +198,34 @@ interface SectionProps {
 
 ```typescript
 interface HeroSectionProps {
-  headline: string;          // EB Garamond Italic
-  subheadline: string;       // Figtree
+  headline: string;          // EB Garamond Italic (white)
+  subheadline: string;       // Figtree (Greige)
   backgroundImage: string;
   showReservationForm?: boolean;
 }
 ```
+
+**Styling:**
+- Background: Full-bleed image + dark overlay
+- Headline: EB Garamond Italic, white (#FCFCFC)
+- Subtext: Figtree, Greige (#C4BCB4)
+- Primary CTA: Sage button (#5F6654), white text
+- Secondary CTA: Linen outline or Copper text link
 
 **Structure:**
 ```
 ┌────────────────────────────────────────┐
 │  [Nav overlay or transparent]          │
 │                                        │
-│         [Headline - large]             │
-│        [Subheadline - medium]          │
+│     [Headline - EB Garamond/white]     │
+│    [Subheadline - Figtree/Greige]      │
 │                                        │
 │   ┌──────────────────────────────┐     │
 │   │  Date    Time    Guests      │     │
-│   │  [Book a Table]              │     │
+│   │  [Book a Table - SAGE]       │     │
 │   └──────────────────────────────┘     │
 │                                        │
-│   [View Menu]  [Order WhatsApp]        │
+│ [View Menu - outline] [WhatsApp]       │
 │                                        │
 └────────────────────────────────────────┘
 ```
@@ -241,10 +257,10 @@ interface FeatureGridProps {
 
 ```typescript
 interface SplitSectionProps {
-  variant: 'dark' | 'ivory';
+  variant: 'dark' | 'paper';
   imagePosition: 'left' | 'right';
   image: string;
-  label?: string;           // Small uppercase Figtree
+  label?: string;           // Figtree uppercase, Copper (dark) or Sage (paper)
   title: string;            // EB Garamond Italic
   description: string;      // Figtree body
   cta?: {
@@ -253,6 +269,12 @@ interface SplitSectionProps {
   };
 }
 ```
+
+**Styling by variant:**
+| Variant | Label | Title | Body | CTA |
+|---------|-------|-------|------|-----|
+| dark | Copper | White | Greige | Copper link |
+| paper | Sage | Espresso | Walnut | Sage link |
 
 **Structure:**
 ```
@@ -300,10 +322,18 @@ interface BookingBlockProps {
 }
 ```
 
+**Styling (Hotel Concierge Feel):**
+- Background: Deep Charcoal (#0C0C0C)
+- Form inputs: Dark bg with subtle Linen borders
+- Focus state: Sage outline
+- Primary button: Sage fill, white text
+- Helper text: Greige
+- Optional: Form over photo with strong overlay
+
 **Contains:**
 - Reservation form OR Resy widget embed
-- Supporting copy (hours, capacity)
-- Secondary CTA for private dining
+- Supporting copy (hours, capacity) in Greige
+- Secondary CTA: "Private Dining Inquiry" (Copper link)
 
 ---
 

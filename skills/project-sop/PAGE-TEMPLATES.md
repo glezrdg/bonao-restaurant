@@ -70,8 +70,8 @@ export default function Home() {
           showReservationForm
         />
 
-        {/* 2. Signatures - Ivory */}
-        <Section variant="ivory" id="signatures">
+        {/* 2. Signatures - Paper (Linen) */}
+        <Section variant="paper" id="signatures">
           <SectionLabel>SIGNATURES</SectionLabel>
           <SectionTitle>Crafted for the night.</SectionTitle>
           <FeatureGrid
@@ -112,8 +112,8 @@ export default function Home() {
           />
         </Section>
 
-        {/* 5. Social Proof - Ivory */}
-        <Section variant="ivory" id="reviews">
+        {/* 5. Social Proof - Paper (Linen) */}
+        <Section variant="paper" id="reviews">
           <ReviewSection
             reviews={[
               { text: 'Best Dominican food in Brooklyn!', author: 'Maria G.' },
@@ -183,7 +183,7 @@ export default function MenuPage() {
         />
 
         {/* Menu Grid */}
-        <Section variant="ivory">
+        <Section variant="paper">
           <MenuGrid
             categories={foodCategories}
             showCategoryNav
@@ -242,7 +242,7 @@ export default function DrinksPage() {
         </Section>
 
         {/* Menu Grid */}
-        <Section variant="ivory">
+        <Section variant="paper">
           <MenuGrid
             categories={drinkCategories}
             itemLinkUrl={restaurantInfo.orderOnlineUrl}
@@ -295,14 +295,14 @@ export default function ReservePage() {
         </Section>
 
         {/* Booking Widget */}
-        <Section variant="ivory" className="py-20">
+        <Section variant="paper" className="py-20">
           <div className="max-w-2xl mx-auto">
             {/* Resy Widget Integration */}
             <ResyWidget restaurantId={process.env.RESY_RESTAURANT_ID} />
 
             {/* Fallback Info */}
             <div className="mt-12 text-center">
-              <p className="text-ink/70 mb-4">
+              <p className="text-espresso/70 mb-4">
                 Having trouble? Call us directly:
               </p>
               <a
@@ -376,19 +376,19 @@ export default function OrderPage() {
         </Section>
 
         {/* Order Options */}
-        <Section variant="ivory" className="py-20">
+        <Section variant="paper" className="py-20">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
             {/* Online Ordering Card */}
             <div className="bg-white rounded-lg p-8 shadow-lg text-center">
-              <div className="w-16 h-16 bg-ember/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 {/* Icon */}
-                <svg className="w-8 h-8 text-ember" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-8 h-8 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-medium text-ink mb-4">Order Online</h2>
-              <p className="text-ink/70 mb-8">
+              <h2 className="text-2xl font-medium text-espresso mb-4">Order Online</h2>
+              <p className="text-espresso/70 mb-8">
                 Browse our full menu, customize your order, and checkout securely.
               </p>
               <Button
@@ -409,8 +409,8 @@ export default function OrderPage() {
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
               </div>
-              <h2 className="text-2xl font-medium text-ink mb-4">Order via WhatsApp</h2>
-              <p className="text-ink/70 mb-8">
+              <h2 className="text-2xl font-medium text-espresso mb-4">Order via WhatsApp</h2>
+              <p className="text-espresso/70 mb-8">
                 Chat directly with us for a personalized ordering experience.
               </p>
               <Button
@@ -464,18 +464,18 @@ export default function PartiesPage() {
         </Section>
 
         {/* Split: Info + Form */}
-        <Section variant="ivory" className="py-20">
+        <Section variant="paper" className="py-20">
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
 
             {/* Left: Info */}
             <div>
-              <span className="text-bronze uppercase tracking-wider text-sm">
+              <span className="text-sage uppercase tracking-wider text-sm">
                 CELEBRATE WITH US
               </span>
               <h2 className="font-garamond text-4xl italic mt-2 mb-6">
                 Your event, our passion
               </h2>
-              <p className="text-ink/70 mb-8">
+              <p className="text-espresso/70 mb-8">
                 Whether it's an intimate birthday dinner, a corporate gathering,
                 or a milestone celebration, our team will craft a bespoke experience
                 tailored to your vision.
@@ -487,8 +487,8 @@ export default function PartiesPage() {
                     <span className="text-bronze">✦</span>
                   </div>
                   <div>
-                    <h3 className="font-medium text-ink">Private Dining Room</h3>
-                    <p className="text-ink/60 text-sm">Accommodates up to 30 guests</p>
+                    <h3 className="font-medium text-espresso">Private Dining Room</h3>
+                    <p className="text-espresso/60 text-sm">Accommodates up to 30 guests</p>
                   </div>
                 </div>
 
@@ -497,8 +497,8 @@ export default function PartiesPage() {
                     <span className="text-bronze">✦</span>
                   </div>
                   <div>
-                    <h3 className="font-medium text-ink">Custom Menus</h3>
-                    <p className="text-ink/60 text-sm">Tailored to your preferences</p>
+                    <h3 className="font-medium text-espresso">Custom Menus</h3>
+                    <p className="text-espresso/60 text-sm">Tailored to your preferences</p>
                   </div>
                 </div>
 
@@ -507,8 +507,8 @@ export default function PartiesPage() {
                     <span className="text-bronze">✦</span>
                   </div>
                   <div>
-                    <h3 className="font-medium text-ink">Full Bar Service</h3>
-                    <p className="text-ink/60 text-sm">Craft cocktails and premium wines</p>
+                    <h3 className="font-medium text-espresso">Full Bar Service</h3>
+                    <p className="text-espresso/60 text-sm">Craft cocktails and premium wines</p>
                   </div>
                 </div>
               </div>
@@ -516,7 +516,7 @@ export default function PartiesPage() {
 
             {/* Right: Form */}
             <div className="bg-white rounded-lg p-8 shadow-lg">
-              <h3 className="text-xl font-medium text-ink mb-6">Request Information</h3>
+              <h3 className="text-xl font-medium text-espresso mb-6">Request Information</h3>
               <PartyForm />
             </div>
 
@@ -566,7 +566,7 @@ export default function AboutPage() {
 
         {/* Story Section */}
         <SplitSection
-          variant="ivory"
+          variant="paper"
           imagePosition="right"
           image="/images/about-interior.jpg"
           label="THE BEGINNING"
@@ -605,7 +605,7 @@ export default function AboutPage() {
 
         {/* Team/Chef Section (optional) */}
         <SplitSection
-          variant="ivory"
+          variant="paper"
           imagePosition="left"
           image="/images/about-chef.jpg"
           label="THE KITCHEN"
@@ -671,7 +671,7 @@ export default function EventsPage() {
         </Section>
 
         {/* Events Grid */}
-        <Section variant="ivory" className="py-20">
+        <Section variant="paper" className="py-20">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {events.map((event) => (
               <EventCard
@@ -690,7 +690,7 @@ export default function EventsPage() {
           {/* Empty state if no events */}
           {events.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-ink/60 text-lg">
+              <p className="text-espresso/60 text-lg">
                 No upcoming events scheduled. Check back soon!
               </p>
             </div>
@@ -736,17 +736,17 @@ export default function JobsPage() {
         </Section>
 
         {/* Content */}
-        <Section variant="ivory" className="py-20">
+        <Section variant="paper" className="py-20">
           <div className="max-w-2xl mx-auto">
-            <p className="text-ink/70 text-lg mb-8 text-center">
+            <p className="text-espresso/70 text-lg mb-8 text-center">
               We're always looking for passionate individuals to join our family.
               If you love hospitality and great food, we'd love to hear from you.
             </p>
 
             {/* Option A: Email-based (simpler) */}
             <div className="bg-white rounded-lg p-8 shadow-lg text-center mb-8">
-              <h2 className="text-2xl font-medium text-ink mb-4">Apply Now</h2>
-              <p className="text-ink/60 mb-6">
+              <h2 className="text-2xl font-medium text-espresso mb-4">Apply Now</h2>
+              <p className="text-espresso/60 mb-6">
                 Send your resume and a brief introduction to:
               </p>
               <a
@@ -760,7 +760,7 @@ export default function JobsPage() {
             {/* OR Option B: Simple form */}
             {/*
             <div className="bg-white rounded-lg p-8 shadow-lg">
-              <h2 className="text-xl font-medium text-ink mb-6">Application</h2>
+              <h2 className="text-xl font-medium text-espresso mb-6">Application</h2>
               <JobForm />
             </div>
             */}
@@ -816,7 +816,7 @@ export default function SpecialsPage() {
         </Section>
 
         {/* Featured Items */}
-        <Section variant="ivory" className="py-20">
+        <Section variant="paper" className="py-20">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {featuredItems.map((item, index) => (
               item && (
@@ -853,12 +853,26 @@ export default function SpecialsPage() {
 ### Section with Label + Title
 
 ```tsx
-<Section variant="ivory">
+{/* On Paper (Linen) sections: use text-sage for labels */}
+<Section variant="paper">
   <div className="text-center mb-12">
-    <span className="text-bronze uppercase tracking-wider text-sm font-medium">
+    <span className="text-sage uppercase tracking-wider text-sm font-medium">
       SECTION LABEL
     </span>
-    <h2 className="font-garamond text-4xl italic mt-2">
+    <h2 className="font-garamond text-4xl italic text-espresso mt-2">
+      Section Title Here
+    </h2>
+  </div>
+  {/* Section content */}
+</Section>
+
+{/* On Dark (Charcoal) sections: use text-copper for labels */}
+<Section variant="dark">
+  <div className="text-center mb-12">
+    <span className="text-copper uppercase tracking-wider text-sm font-medium">
+      SECTION LABEL
+    </span>
+    <h2 className="font-garamond text-4xl italic text-white mt-2">
       Section Title Here
     </h2>
   </div>

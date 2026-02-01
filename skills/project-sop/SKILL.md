@@ -28,7 +28,7 @@ description: Standard Operating Procedures for Bonao Restaurant website developm
 | Task | Description | Acceptance |
 |------|-------------|------------|
 | Font Setup | Add Figtree + EB Garamond fonts | Fonts load in layout, CSS variables set |
-| Color Tokens | Implement brand colors as CSS/Tailwind | All 5 brand colors available |
+| Color Tokens | Implement brand colors as CSS/Tailwind | Full palette available (Sage, Bronze, Linen, etc.) |
 | Typography Scale | Create text utility classes | Headers, body, labels styled |
 | Component Tokens | Button, card, section base styles | Consistent design primitives |
 
@@ -44,7 +44,7 @@ description: Standard Operating Procedures for Bonao Restaurant website developm
 |------|-------------|------------|
 | Header Component | Sticky nav with CTAs | Nav works on mobile/desktop |
 | Footer Component | Full footer with all info | Address, hours, map, socials |
-| Page Layout | Wrapper with section rhythm | Dark/Ivory alternating sections |
+| Page Layout | Wrapper with section rhythm | Dark (Charcoal) / Paper (Linen) alternating sections |
 | Mobile Nav | Hamburger menu with CTAs | Touch-friendly, accessible |
 
 **Files to create:**
@@ -522,11 +522,29 @@ RESY_RESTAURANT_ID=your_id_here   # For Resy widget
 
 ### Brand Colors (CSS Variables)
 ```css
---midnight: #020B14;
---ink: #190F0D;
---ivory: #F8F2EC;
---bronze: #A46A3A;
---ember: #BB452B;
+/* Base (Dark Mode) */
+--deep-charcoal: #0C0C0C;
+--primary-text-dark: #FCFCFC;
+--greige: #C4BCB4;
+
+/* Brand Identity (Sage - Primary CTA) */
+--logo-sage: #5F6654;
+--sage-focus: rgba(95, 102, 84, 0.5);
+
+/* Warm Luxury Accents */
+--bronze: #9C744C;
+--copper: #A47444;
+--walnut: #644C3C;
+--espresso: #542C0C;
+
+/* Paper Sections */
+--linen: #ECE4DC;
+--paper-white: #FCFCFC;
+--sand-cream: #F4D4B4;
+
+/* Borders */
+--line-dark: rgba(236, 228, 220, 0.12);
+--line-light: rgba(100, 76, 60, 0.12);
 ```
 
 ### Key External Links
