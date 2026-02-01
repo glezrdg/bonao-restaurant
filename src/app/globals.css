@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
+/* Custom Fonts */
+@font-face {
+  font-family: 'Safira March';
+  src: url('/fonts/Safira March.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-safira: 'Safira March', serif;
   /* Base (Dark Mode Luxury) */
   --deep-charcoal: #0C0C0C;
   --primary-text-dark: #FCFCFC;
@@ -64,6 +74,11 @@ body {
 
 .font-figtree {
   font-family: var(--font-sans);
+}
+
+.font-safira {
+  font-family: var(--font-safira);
+  font-weight: 400;
 }
 
 /* Section label style (uppercase, letter-spaced) */

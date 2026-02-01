@@ -50,16 +50,16 @@ export function Header({ transparent = false }: HeaderProps) {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-24 md:h-32">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <motion.div whileHover={{ scale: 1.02 }}>
                 <Image
                   src="/BONAO - Logotipo-blanco.svg"
                   alt="Bonao Restaurant"
-                  width={280}
-                  height={112}
-                  className="h-16 md:h-28 w-auto"
+                  width={420}
+                  height={168}
+                  className="h-20 sm:h-24 lg:h-32 w-auto"
                   priority
                 />
               </motion.div>

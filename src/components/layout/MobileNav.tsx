@@ -60,9 +60,9 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           <Image
             src="/BONAO - Logotipo-blanco.svg"
             alt="Bonao Restaurant"
-            width={140}
-            height={44}
-            className="h-10 w-auto"
+            width={210}
+            height={66}
+            className="h-14 w-auto"
           />
           <motion.button
             whileTap={{ scale: 0.9 }}

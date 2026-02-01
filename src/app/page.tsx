@@ -2,7 +2,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Section, SectionLabel, SectionTitle } from "@/components/layout/Section";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { FeatureGrid } from "@/components/sections/FeatureGrid";
+import { EditorialGrid } from "@/components/sections/EditorialGrid";
 import { MenuPreview } from "@/components/sections/MenuPreview";
 import { ReviewSection } from "@/components/sections/ReviewSection";
 import { BookingBlock } from "@/components/sections/BookingBlock";
@@ -10,27 +10,28 @@ import { menu } from "@/data/menu";
 
 const signatureItems = [
   {
+    image: "/optimized/katrine/3P4A0102_800.webp",
+    title: "Live Lounge Experience",
+    href: "/events",
+  },
+  {
     image: "/optimized/katrine/3P4A0028_800.webp",
-    title: "Chef's Selections",
-    description: "Signature dishes crafted with passion",
+    title: "Fine Dining Cuisine",
     href: "/menu",
   },
   {
-    image: "/optimized/katrine/3P4A0102_800.webp",
-    title: "Craft Cocktails",
-    description: "Handcrafted spirits and fresh juices",
+    image: "/optimized/katrine/3P4A0047_800.webp",
+    title: "Signature Cocktails",
     href: "/drinks",
   },
   {
     image: "/optimized/restaurant/_S8A7314_800.webp",
-    title: "Private Dining",
-    description: "Intimate spaces for special occasions",
+    title: "Private Dining Rooms",
     href: "/parties",
   },
   {
     image: "/optimized/katrine/3P4A0150_800.webp",
-    title: "Wine & Spirits",
-    description: "Curated selection from around the world",
+    title: "Wine & Spirits Selection",
     href: "/drinks",
   },
 ];
@@ -61,20 +62,26 @@ export default function Home() {
     <>
       <Header transparent />
       <main>
-        {/* 1. Hero Section - Dark */}
+        {/* 1. Hero Section - Dark with Carousel */}
         <HeroSection
           headline="Fire & Spirits"
           subheadline="Modern Dominican cuisine crafted for the night. Bold flavors, intimate atmosphere, unforgettable experiences."
-          backgroundImage="/optimized/restaurant/_S8A7285"
+          backgroundImages={[
+            "/optimized/restaurant/_S8A7285",
+            "/optimized/restaurant/_S8A7295",
+            "/optimized/restaurant/_S8A7314",
+            "/optimized/restaurant/_S8A7351",
+          ]}
+          interval={6000}
         />
 
         {/* 2. Signatures Section - Paper (Linen) */}
         <Section variant="paper" id="signatures">
-          <div className="text-center mb-12">
-            <SectionLabel variant="paper">SIGNATURES</SectionLabel>
-            <SectionTitle variant="paper">Crafted for the night.</SectionTitle>
-          </div>
-          <FeatureGrid items={signatureItems} />
+          <EditorialGrid
+            headline="WHERE EVERY FLAVOR"
+            subheadline="ELEVATED BY ELEGANCE"
+            items={signatureItems}
+          />
         </Section>
 
         {/* 3. Tonight's Specials - Dark */}
