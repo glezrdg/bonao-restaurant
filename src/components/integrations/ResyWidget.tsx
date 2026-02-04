@@ -6,12 +6,17 @@ import Script from "next/script";
 interface ResyWidgetProps {
   venueId?: number;
   apiKey?: string;
+  buttonText?: string;
+  className?: string;
 }
 
 export function ResyWidget({
   venueId = 91747,
   apiKey = "DXCS1ndWZsZBCjkBA7pAZM2w4HRemi30",
+  buttonText = "Book a Table",
+  className = "",
 }: ResyWidgetProps) {
+  const resyContainerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const initialized = useRef(false);
 
@@ -54,14 +59,30 @@ export function ResyWidget({
           window.dispatchEvent(new Event("resy-widget-loaded"));
         }}
       />
-      <div className="text-center">
-        <a
-          ref={buttonRef}
-          href="https://resy.com/cities/new-york-ny/venues/bonao-restaurant"
-          className="inline-flex items-center justify-center px-8 py-4 bg-sage text-paper rounded-lg font-medium text-lg hover:bg-sage-hover transition-premium"
+      <div className={`relative inline-block ${className}`}>
+        {/* Your beautiful custom button (visible but doesn't capture clicks) */}
+        <span
+          className="inline-flex items-center justify-center px-8 py-4 bg-sage text-paper rounded-lg font-medium text-lg cursor-pointer pointer-events-none"
+          aria-hidden="true"
         >
-          Book your reservation on Resy
-        </a>
+          {buttonText}
+        </span>
+
+        {/* Invisible Resy widget on top - captures all clicks */}
+        <div
+          ref={resyContainerRef}
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ opacity: 0 }}
+        >
+          <a
+            ref={buttonRef}
+            href="https://resy.com/cities/new-york-ny/venues/bonao-restaurant"
+            className="w-full h-full block"
+            aria-label={buttonText}
+          >
+            Reserve
+          </a>
+        </div>
       </div>
     </>
   );

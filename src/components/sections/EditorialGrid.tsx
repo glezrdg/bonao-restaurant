@@ -153,7 +153,7 @@ function EditorialCard({
       </div>
 
       {/* Caption */}
-      <p className={`mt-3 text-center font-garamond italic text-walnut ${featured ? "text-lg" : "text-sm md:text-base"}`}>
+      <p className={`mt-3 text-center font-garamond text-walnut ${featured ? "text-lg" : "text-sm md:text-base"}`}>
         {title}
       </p>
     </div>

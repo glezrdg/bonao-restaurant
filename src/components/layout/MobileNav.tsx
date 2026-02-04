@@ -16,10 +16,9 @@ interface MobileNavProps {
 const navLinks = [
   { label: "Menu", href: "/menu" },
   { label: "Drinks", href: "/drinks" },
-  { label: "Reserve", href: "/reserve" },
   { label: "Order", href: "/order" },
-  { label: "Parties", href: "/parties" },
   { label: "Events", href: "/events" },
+  { label: "Parties", href: "/parties" },
   { label: "About", href: "/about" },
 ];
 
@@ -94,7 +93,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           transition={{ delay: 0.1 }}
           className="p-6 space-y-3 border-b border-line-dark"
         >
-          <Button variant="primary" fullWidth href="/reserve" onClick={onClose}>
+          <Button variant="primary" fullWidth href="https://resy.com/cities/new-york-ny/venues/bonao-restaurant" external onClick={onClose}>
             Reserve a Table
           </Button>
           <Button

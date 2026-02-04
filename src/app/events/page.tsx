@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Section, SectionLabel, SectionTitle } from "@/components/layout/Section";
-import { PageHeader } from "@/components/sections/PageHeader";
+import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
@@ -20,7 +19,7 @@ const events = [
     time: "8:00 PM",
     description:
       "Enjoy smooth jazz while dining on our signature dishes. Featuring rotating local artists and a special cocktail menu.",
-    image: "/optimized/katrine/3P4A0102_800.webp",
+    image: "/event1.jpeg",
   },
   {
     id: 2,
@@ -29,8 +28,15 @@ const events = [
     time: "6:00 PM",
     description:
       "A special tasting menu celebrating the diverse flavors of the Dominican Republic. Five courses paired with cocktails.",
-    image: "/optimized/katrine/3P4A0028_800.webp",
+    image: "/event2.jpeg",
   },
+];
+
+const features = [
+  { icon: "🎵", title: "Live Music", desc: "Every weekend" },
+  { icon: "🍸", title: "Craft Cocktails", desc: "Signature drinks" },
+  { icon: "🎉", title: "Private Events", desc: "Tailored experiences" },
+  { icon: "🎤", title: "DJ Nights", desc: "Dance the night away" },
 ];
 
 export default function EventsPage() {
@@ -38,16 +44,74 @@ export default function EventsPage() {
     <>
       <Header transparent />
       <main>
-        {/* Hero */}
-        <PageHeader
-          label="HAPPENINGS"
-          title="Upcoming Events"
-          description="Join us for special nights and celebrations"
-          backgroundImage="/optimized/restaurant/_S8A7281"
-        />
+        {/* Video Hero */}
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+          {/* Video Background */}
+          <div className="absolute inset-0">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="/event-video.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-linear-to-b from-charcoal/70 via-charcoal/50 to-charcoal" />
+          </div>
 
-        {/* Events Grid */}
-        <Section variant="paper" className="py-20">
+          {/* Content */}
+          <div className="relative z-10 text-center px-6 pt-32 pb-16">
+            <span className="section-label text-copper mb-4 block">
+              Unforgettable Nights
+            </span>
+            <h1 className="font-safira text-5xl md:text-6xl lg:text-7xl text-paper mb-6">
+              WHERE THE NIGHT
+              <br />
+              <span className="text-paper/80">COMES ALIVE</span>
+            </h1>
+            <p className="text-greige text-lg md:text-xl max-w-2xl mx-auto mb-8">
+              From live music to private celebrations, experience nights that linger in memory long after the last song fades.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Button variant="primary" size="lg" href="https://resy.com/cities/new-york-ny/venues/bonao-restaurant" external>
+                Reserve Now
+              </Button>
+              <Button variant="secondary" size="lg" href="/parties">
+                Private Events
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Strip */}
+        <div className="bg-charcoal border-y border-line-dark">
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+              {features.map((feature) => (
+                <div key={feature.title} className="flex items-center gap-3 text-paper">
+                  <span className="text-2xl">{feature.icon}</span>
+                  <div>
+                    <p className="font-medium">{feature.title}</p>
+                    <p className="text-sm text-greige">{feature.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Upcoming Events */}
+        <Section variant="paper">
+          <div className="text-center mb-12">
+            <span className="section-label text-sage mb-4 block">
+              HAPPENINGS
+            </span>
+            <h2 className="font-safira text-4xl md:text-5xl text-espresso">
+              Upcoming Events
+            </h2>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {events.map((event) => (
               <div
@@ -82,31 +146,79 @@ export default function EventsPage() {
                     {event.title}
                   </h3>
                   <p className="text-walnut mb-6">{event.description}</p>
-                  <Button variant="primary" size="md" href="/reserve">
+                  <Button variant="primary" size="md" href="https://resy.com/cities/new-york-ny/venues/bonao-restaurant" external>
                     Reserve for This Event
                   </Button>
                 </div>
               </div>
             ))}
           </div>
+        </Section>
 
-          {/* Empty state (hidden when events exist) */}
-          {events.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-walnut text-lg">
-                No upcoming events scheduled. Check back soon!
-              </p>
+        {/* Gallery Strip */}
+        <Section variant="dark">
+          <div className="text-center mb-12">
+            <span className="section-label text-copper mb-4 block">
+              THE ATMOSPHERE
+            </span>
+            <h2 className="font-safira text-4xl md:text-5xl text-paper">
+              Nights to Remember
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="relative aspect-square rounded-lg overflow-hidden">
+              <Image
+                src="/event1.jpeg"
+                alt="Event atmosphere"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+              />
             </div>
-          )}
+            <div className="relative aspect-square rounded-lg overflow-hidden">
+              <Image
+                src="/event2.jpeg"
+                alt="Event atmosphere"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="relative aspect-square rounded-lg overflow-hidden">
+              <Image
+                src="/event1.jpeg"
+                alt="Event atmosphere"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500 object-right"
+              />
+            </div>
+            <div className="relative aspect-square rounded-lg overflow-hidden">
+              <Image
+                src="/event2.jpeg"
+                alt="Event atmosphere"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500 object-left"
+              />
+            </div>
+          </div>
+        </Section>
 
-          {/* CTA */}
-          <div className="text-center mt-12">
-            <p className="text-walnut mb-4">
-              Want to host your own event?
+        {/* CTA Section */}
+        <Section variant="paper">
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="font-safira text-3xl md:text-4xl text-espresso mb-4">
+              Host Your Event With Us
+            </h2>
+            <p className="text-walnut mb-8">
+              From intimate gatherings to grand celebrations, our team will help create an unforgettable experience tailored to your vision.
             </p>
-            <Button variant="ghost" href="/parties">
-              Inquire About Private Events &rarr;
-            </Button>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Button variant="primary" size="lg" href="/parties">
+                Plan Your Private Event
+              </Button>
+              <Button variant="ghost" href="tel:+17183460285">
+                Call Us: (718) 346-0285
+              </Button>
+            </div>
           </div>
         </Section>
       </main>

@@ -69,7 +69,6 @@ body {
 /* Typography utilities */
 .font-garamond {
   font-family: var(--font-serif);
-  font-style: italic;
 }
 
 .font-figtree {
@@ -90,10 +89,9 @@ body {
   text-transform: uppercase;
 }
 
-/* Headline style (EB Garamond Italic) */
+/* Headline style */
 .headline {
   font-family: var(--font-serif);
-  font-style: italic;
   font-weight: 400;
 }
 

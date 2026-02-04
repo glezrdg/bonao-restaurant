@@ -12,7 +12,7 @@ const figtree = Figtree({
 const ebGaramond = EB_Garamond({
   variable: "--font-garamond",
   subsets: ["latin"],
-  style: ["italic"],
+  style: ["normal"],
   weight: ["400", "500", "600"],
 });
 

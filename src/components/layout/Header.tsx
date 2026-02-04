@@ -5,33 +5,40 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
 import { MobileNav } from "./MobileNav";
-import { restaurantInfo } from "@/data/menu";
 
 interface HeaderProps {
   transparent?: boolean;
+  /** When true, logo fades in after scroll (for hero animation) */
+  animatedLogo?: boolean;
 }
 
 const navLinks = [
   { label: "Menu", href: "/menu" },
   { label: "Drinks", href: "/drinks" },
-  { label: "Reserve", href: "/reserve" },
+  { label: "Events", href: "/events" },
   { label: "Parties", href: "/parties" },
   { label: "About", href: "/about" },
 ];
 
-export function Header({ transparent = false }: HeaderProps) {
+export function Header({ transparent = false, animatedLogo = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showLogo, setShowLogo] = useState(!animatedLogo);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 20);
+      // Show header logo after scrolling halfway down viewport
+      if (animatedLogo) {
+        const halfViewport = window.innerHeight * 0.5;
+        setShowLogo(scrollY > halfViewport);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [animatedLogo]);
 
   const showBackground = !transparent || isScrolled;
 
@@ -50,23 +57,30 @@ export function Header({ transparent = false }: HeaderProps) {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24 md:h-32">
-            {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <motion.div whileHover={{ scale: 1.02 }}>
-                <Image
-                  src="/BONAO - Logotipo-blanco.svg"
-                  alt="Bonao Restaurant"
-                  width={420}
-                  height={168}
-                  className="h-20 sm:h-24 lg:h-32 w-auto"
-                  priority
-                />
-              </motion.div>
-            </Link>
+          <div className="grid grid-cols-3 items-center h-16 md:h-18">
+            {/* Logo - Left */}
+            <div className="justify-self-start">
+              <Link href="/" className="flex items-center">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  initial={{ opacity: animatedLogo ? 0 : 1 }}
+                  animate={{ opacity: showLogo ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src="/BONAO - Logotipo-blanco.svg"
+                    alt="Bonao Restaurant"
+                    width={420}
+                    height={100}
+                    className="h-6 sm:h-7 lg:h-8 w-auto"
+                    priority
+                  />
+                </motion.div>
+              </Link>
+            </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            {/* Desktop Navigation - Center */}
+            <nav className="hidden lg:flex items-center justify-center gap-8">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -77,7 +91,7 @@ export function Header({ transparent = false }: HeaderProps) {
                   <Link
                     href={link.href}
                     className={cn(
-                      "text-sm font-medium tracking-wide relative",
+                      "text-base font-medium tracking-wide relative",
                       "text-greige hover:text-paper",
                       "transition-premium",
                     )}
@@ -93,48 +107,30 @@ export function Header({ transparent = false }: HeaderProps) {
               ))}
             </nav>
 
-            {/* Desktop CTAs */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
-              className="hidden lg:flex items-center gap-4"
-            >
-              <Button
-                variant="secondary"
-                size="sm"
-                href={restaurantInfo.orderOnlineUrl}
-                external
+            {/* Mobile Menu Button - Right */}
+            <div className="justify-self-end">
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                type="button"
+                onClick={() => setMobileNavOpen(true)}
+                className="lg:hidden p-2 text-paper hover:text-greige transition-premium"
+                aria-label="Open menu"
               >
-                Order Online
-              </Button>
-              <Button variant="primary" size="sm" href="/reserve">
-                Reserve
-              </Button>
-            </motion.div>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              type="button"
-              onClick={() => setMobileNavOpen(true)}
-              className="lg:hidden p-2 text-paper hover:text-greige transition-premium"
-              aria-label="Open menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </motion.button>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </motion.button>
+            </div>
           </div>
         </div>
       </motion.header>

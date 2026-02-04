@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/Button";
+import { ResyWidget } from "@/components/integrations/ResyWidget";
 import { restaurantInfo } from "@/data/menu";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/motion";
 
@@ -19,7 +20,6 @@ function getImageSrc(basePath: string, size: number = 1920): string {
 }
 
 interface HeroSectionProps {
-  headline?: string;
   subheadline?: string;
   /** Array of background image base paths for carousel */
   backgroundImages?: string[];
@@ -30,7 +30,6 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({
-  headline = "Fire & Spirits",
   subheadline = "Modern Dominican cuisine crafted for the night",
   backgroundImages,
   backgroundImage,
@@ -82,46 +81,33 @@ export function HeroSection({
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal" />
       </div>
 
-      {/* Carousel Indicators */}
-      {images.length > 1 && (
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-copper w-6"
-                  : "bg-paper/40 hover:bg-paper/60"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-      )}
 
       {/* Content */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center pt-20"
+        className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center pt-32"
       >
         {/* Label */}
         <motion.span
           variants={staggerItem}
-          className="section-label text-copper mb-4 block"
+          className="section-label text-copper mb-6 block"
         >
           Brooklyn, NY
         </motion.span>
 
-        {/* Headline */}
-        <motion.h1
-          variants={fadeInUp}
-          className="font-safira text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-paper mb-4 sm:mb-6"
-        >
-          {headline}
-        </motion.h1>
+        {/* Logo */}
+        <motion.div variants={fadeInUp} className="mb-6 sm:mb-8">
+          <Image
+            src="/BONAO - Logotipo-blanco.svg"
+            alt="Bonao Restaurant"
+            width={540}
+            height={130}
+            className="w-70 sm:w-90 md:w-110 lg:w-135 h-auto mx-auto"
+            priority
+          />
+        </motion.div>
 
         {/* Subheadline */}
         <motion.p
@@ -188,9 +174,7 @@ export function HeroSection({
               <span className="text-xs sm:text-sm">2 Guests</span>
             </div>
           </div>
-          <Button variant="primary" size="md" href="/reserve">
-            Book a Table
-          </Button>
+          <ResyWidget buttonText="Book a Table" />
         </motion.div>
 
         {/* Secondary CTAs */}
@@ -201,15 +185,62 @@ export function HeroSection({
           <Button variant="secondary" size="md" href="/menu">
             View Menu
           </Button>
-          <Button
-            variant="ghost"
-            size="md"
+          <a
             href={restaurantInfo.orderOnlineUrl}
-            external
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 px-6 py-3 rounded-full border border-copper/50 text-copper hover:bg-copper hover:text-paper transition-all duration-300"
           >
-            Order Online &rarr;
-          </Button>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+            <span className="font-medium">Order Online</span>
+            <svg
+              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
         </motion.div>
+
+        {/* Carousel Indicators */}
+        {images.length > 1 && (
+          <motion.div
+            variants={staggerItem}
+            className="flex items-center justify-center gap-2 mt-8"
+          >
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-copper w-6"
+                    : "bg-paper/40 hover:bg-paper/60"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Scroll indicator */}

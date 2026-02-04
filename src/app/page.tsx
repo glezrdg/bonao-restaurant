@@ -2,52 +2,28 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Section, SectionLabel, SectionTitle } from "@/components/layout/Section";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { EditorialGrid } from "@/components/sections/EditorialGrid";
+import { EventsShowcase } from "@/components/sections/EventsShowcase";
 import { MenuPreview } from "@/components/sections/MenuPreview";
 import { ReviewSection } from "@/components/sections/ReviewSection";
-import { BookingBlock } from "@/components/sections/BookingBlock";
+import { GallerySection } from "@/components/sections/GallerySection";
 import { menu } from "@/data/menu";
-
-const signatureItems = [
-  {
-    image: "/optimized/katrine/3P4A0102_800.webp",
-    title: "Live Lounge Experience",
-    href: "/events",
-  },
-  {
-    image: "/optimized/katrine/3P4A0028_800.webp",
-    title: "Fine Dining Cuisine",
-    href: "/menu",
-  },
-  {
-    image: "/optimized/katrine/3P4A0047_800.webp",
-    title: "Signature Cocktails",
-    href: "/drinks",
-  },
-  {
-    image: "/optimized/restaurant/_S8A7314_800.webp",
-    title: "Private Dining Rooms",
-    href: "/parties",
-  },
-  {
-    image: "/optimized/katrine/3P4A0150_800.webp",
-    title: "Wine & Spirits Selection",
-    href: "/drinks",
-  },
-];
 
 const reviews = [
   {
-    text: "Best Dominican food in Brooklyn! The atmosphere is incredible.",
-    author: "Maria G.",
+    text: "I loved the atmosphere. The food is exquisite and giving luxury! I dances and had amazing time. I would totally recommend and for the quality the prices are excellent for the quality.",
+    author: "Amel Trinidad",
+    timeAgo: "2 weeks ago",
+    isNew: true,
   },
   {
-    text: "The cocktails are amazing and the food is even better. A must-visit!",
-    author: "James T.",
+    text: "Very friendly, sophisticated, ambient lighting, perfect for any event. The menu is very different to what is in the area. Would 100% come back and recommend friends.",
+    author: "Laury Paulino",
+    timeAgo: "2 months ago",
   },
   {
-    text: "Our go-to for special occasions. The private dining room is perfect.",
-    author: "Lisa M.",
+    text: "This restaurant absolutely blew me away! It's gourmet Dominican cuisine with a modern twist unlike any other. Our group got different drinks and they were all delicious. A beautifully decorated establishment.",
+    author: "Rachel Vargas-Chavez",
+    timeAgo: "6 months ago",
   },
 ];
 
@@ -60,28 +36,23 @@ export default function Home() {
 
   return (
     <>
-      <Header transparent />
+      <Header transparent animatedLogo />
       <main>
         {/* 1. Hero Section - Dark with Carousel */}
         <HeroSection
-          headline="Fire & Spirits"
           subheadline="Modern Dominican cuisine crafted for the night. Bold flavors, intimate atmosphere, unforgettable experiences."
           backgroundImages={[
-            "/optimized/restaurant/_S8A7285",
-            "/optimized/restaurant/_S8A7295",
-            "/optimized/restaurant/_S8A7314",
-            "/optimized/restaurant/_S8A7351",
+            "/optimized/restaurant/_S8A7279",
+            "/optimized/restaurant/_S8A7281",
+            "/optimized/restaurant/_S8A7328",
+            "/optimized/restaurant/_S8A7361",
           ]}
           interval={6000}
         />
 
-        {/* 2. Signatures Section - Paper (Linen) */}
-        <Section variant="paper" id="signatures">
-          <EditorialGrid
-            headline="WHERE EVERY FLAVOR"
-            subheadline="ELEVATED BY ELEGANCE"
-            items={signatureItems}
-          />
+        {/* 2. Events Section - Paper (Linen) */}
+        <Section variant="paper" id="events">
+          <EventsShowcase />
         </Section>
 
         {/* 3. Tonight's Specials - Dark */}
@@ -112,9 +83,9 @@ export default function Home() {
           <ReviewSection reviews={reviews} badges={badges} />
         </Section>
 
-        {/* 5. Booking Block - Dark */}
-        <Section variant="dark" id="reserve">
-          <BookingBlock showPrivateDiningCTA />
+        {/* 5. Gallery Section - Dark */}
+        <Section variant="dark" id="gallery">
+          <GallerySection />
         </Section>
       </main>
       <Footer />
